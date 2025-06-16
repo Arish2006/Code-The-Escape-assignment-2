@@ -1,0 +1,34 @@
+﻿/**
+ * @input A : Read only ( DON'T MODIFY ) Integer array
+ * @input n1 : Integer array's ( A ) length
+ * @input B : Integer
+ * 
+ * @Output Integer
+ */
+int findCount(const int* A, int n1, int B) {
+    int left=0,right=n1;
+    int lower=0,upper=n1;
+    while(left<right){
+        int mid=left+(right-left)/2;
+        if(A[mid]>=B){
+            right=mid;
+        }
+        else{
+            left=mid+1;
+        }
+    }
+    lower=left;
+    left=0,right=n1;
+    while(left<right){
+        int mid=left+(right-left)/2;
+        if(A[mid]<=B){
+            left=mid+1;
+        }
+        else{
+            right=mid;
+        }
+    }
+    upper=left;
+    return upper-lower;
+    
+}
